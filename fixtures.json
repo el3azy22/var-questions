@@ -1,0 +1,1025 @@
+{
+ "league": "دوري أدنوك للمحترفين",
+ "season": "2026-2027",
+ "source": "TheSportsDB",
+ "current": 9,
+ "rounds": [
+  {
+   "round": 1,
+   "matches": [
+    {
+     "id": "2523957",
+     "home": "nasr",
+     "away": "kalba",
+     "ko": "2026-08-14T14:10:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 2
+    },
+    {
+     "id": "2523954",
+     "home": "wahda",
+     "away": "ajman",
+     "ko": "2026-08-14T16:45:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 3
+    },
+    {
+     "id": "2523953",
+     "home": "dhafra",
+     "away": "sharjah",
+     "ko": "2026-08-15T14:10:00Z",
+     "status": "FT",
+     "hs": 1,
+     "as": 3
+    },
+    {
+     "id": "2523952",
+     "home": "wasl",
+     "away": "united",
+     "ko": "2026-08-15T16:45:00Z",
+     "status": "FT",
+     "hs": 5,
+     "as": 1
+    },
+    {
+     "id": "2523956",
+     "home": "khorfakkan",
+     "away": "shabab",
+     "ko": "2026-08-15T16:45:00Z",
+     "status": "FT",
+     "hs": 1,
+     "as": 5
+    },
+    {
+     "id": "2523951",
+     "home": "hatta",
+     "away": "jazira",
+     "ko": "2026-08-16T14:10:00Z",
+     "status": "FT",
+     "hs": 0,
+     "as": 2
+    },
+    {
+     "id": "2523955",
+     "home": "baniyas",
+     "away": "ain",
+     "ko": "2026-08-16T16:45:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 4
+    }
+   ]
+  },
+  {
+   "round": 2,
+   "matches": [
+    {
+     "id": "2544859",
+     "home": "kalba",
+     "away": "wasl",
+     "ko": "2026-08-21T14:00:00Z",
+     "status": "FT",
+     "hs": 0,
+     "as": 3
+    },
+    {
+     "id": "2544860",
+     "home": "nasr",
+     "away": "wahda",
+     "ko": "2026-08-21T16:35:00Z",
+     "status": "FT",
+     "hs": 1,
+     "as": 0
+    },
+    {
+     "id": "2544861",
+     "home": "shabab",
+     "away": "dhafra",
+     "ko": "2026-08-22T14:00:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 0
+    },
+    {
+     "id": "2544862",
+     "home": "ajman",
+     "away": "hatta",
+     "ko": "2026-08-22T14:00:00Z",
+     "status": "FT",
+     "hs": 4,
+     "as": 3
+    },
+    {
+     "id": "2544863",
+     "home": "ain",
+     "away": "khorfakkan",
+     "ko": "2026-08-22T16:35:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 0
+    },
+    {
+     "id": "2544864",
+     "home": "baniyas",
+     "away": "united",
+     "ko": "2026-08-23T14:00:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 3
+    },
+    {
+     "id": "2544865",
+     "home": "sharjah",
+     "away": "jazira",
+     "ko": "2026-08-23T16:35:00Z",
+     "status": "FT",
+     "hs": 0,
+     "as": 2
+    }
+   ]
+  },
+  {
+   "round": 3,
+   "matches": [
+    {
+     "id": "2544866",
+     "home": "united",
+     "away": "kalba",
+     "ko": "2026-08-28T13:55:00Z",
+     "status": "FT",
+     "hs": 4,
+     "as": 1
+    },
+    {
+     "id": "2544867",
+     "home": "wasl",
+     "away": "shabab",
+     "ko": "2026-08-28T16:30:00Z",
+     "status": "FT",
+     "hs": 0,
+     "as": 1
+    },
+    {
+     "id": "2544868",
+     "home": "jazira",
+     "away": "ajman",
+     "ko": "2026-08-29T13:55:00Z",
+     "status": "FT",
+     "hs": 3,
+     "as": 0
+    },
+    {
+     "id": "2544869",
+     "home": "khorfakkan",
+     "away": "dhafra",
+     "ko": "2026-08-29T13:55:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 0
+    },
+    {
+     "id": "2544870",
+     "home": "ain",
+     "away": "nasr",
+     "ko": "2026-08-29T16:30:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 1
+    },
+    {
+     "id": "2544871",
+     "home": "hatta",
+     "away": "sharjah",
+     "ko": "2026-08-30T13:55:00Z",
+     "status": "FT",
+     "hs": 0,
+     "as": 3
+    },
+    {
+     "id": "2544872",
+     "home": "wahda",
+     "away": "baniyas",
+     "ko": "2026-08-30T16:30:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 1
+    }
+   ]
+  },
+  {
+   "round": 4,
+   "matches": [
+    {
+     "id": "2544873",
+     "home": "kalba",
+     "away": "ain",
+     "ko": "2026-09-04T13:45:00Z",
+     "status": "FT",
+     "hs": 0,
+     "as": 2
+    },
+    {
+     "id": "2544874",
+     "home": "wasl",
+     "away": "khorfakkan",
+     "ko": "2026-09-04T16:15:00Z",
+     "status": "FT",
+     "hs": 5,
+     "as": 2
+    },
+    {
+     "id": "2544875",
+     "home": "sharjah",
+     "away": "united",
+     "ko": "2026-09-05T13:45:00Z",
+     "status": "FT",
+     "hs": 4,
+     "as": 3
+    },
+    {
+     "id": "2544876",
+     "home": "baniyas",
+     "away": "hatta",
+     "ko": "2026-09-05T13:45:00Z",
+     "status": "FT",
+     "hs": 0,
+     "as": 1
+    },
+    {
+     "id": "2544877",
+     "home": "shabab",
+     "away": "jazira",
+     "ko": "2026-09-05T16:15:00Z",
+     "status": "FT",
+     "hs": 1,
+     "as": 3
+    },
+    {
+     "id": "2544878",
+     "home": "nasr",
+     "away": "ajman",
+     "ko": "2026-09-06T13:45:00Z",
+     "status": "FT",
+     "hs": 1,
+     "as": 2
+    },
+    {
+     "id": "2544879",
+     "home": "dhafra",
+     "away": "wahda",
+     "ko": "2026-09-06T16:15:00Z",
+     "status": "FT",
+     "hs": 0,
+     "as": 1
+    }
+   ]
+  },
+  {
+   "round": 5,
+   "matches": [
+    {
+     "id": "2589085",
+     "home": "jazira",
+     "away": "nasr",
+     "ko": "2026-09-10T13:40:00Z",
+     "status": "FT",
+     "hs": 1,
+     "as": 1
+    },
+    {
+     "id": "2589086",
+     "home": "united",
+     "away": "shabab",
+     "ko": "2026-09-10T13:40:00Z",
+     "status": "FT",
+     "hs": 1,
+     "as": 1
+    },
+    {
+     "id": "2589087",
+     "home": "ain",
+     "away": "wasl",
+     "ko": "2026-09-10T16:15:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 2
+    },
+    {
+     "id": "2589088",
+     "home": "hatta",
+     "away": "dhafra",
+     "ko": "2026-09-11T13:40:00Z",
+     "status": "FT",
+     "hs": 1,
+     "as": 2
+    },
+    {
+     "id": "2589089",
+     "home": "khorfakkan",
+     "away": "baniyas",
+     "ko": "2026-09-11T13:40:00Z",
+     "status": "FT",
+     "hs": 0,
+     "as": 0
+    },
+    {
+     "id": "2589090",
+     "home": "wahda",
+     "away": "sharjah",
+     "ko": "2026-09-11T16:15:00Z",
+     "status": "FT",
+     "hs": 1,
+     "as": 0
+    },
+    {
+     "id": "2589091",
+     "home": "ajman",
+     "away": "kalba",
+     "ko": "2026-09-11T16:15:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 3
+    }
+   ]
+  },
+  {
+   "round": 6,
+   "matches": [
+    {
+     "id": "2603380",
+     "home": "dhafra",
+     "away": "united",
+     "ko": "2026-10-16T13:05:00Z",
+     "status": "FT",
+     "hs": 5,
+     "as": 1
+    },
+    {
+     "id": "2603381",
+     "home": "baniyas",
+     "away": "wasl",
+     "ko": "2026-10-16T15:45:00Z",
+     "status": "FT",
+     "hs": 0,
+     "as": 2
+    },
+    {
+     "id": "2603382",
+     "home": "nasr",
+     "away": "hatta",
+     "ko": "2026-10-17T13:05:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 0
+    },
+    {
+     "id": "2603383",
+     "home": "shabab",
+     "away": "ain",
+     "ko": "2026-10-17T15:45:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 0
+    },
+    {
+     "id": "2603384",
+     "home": "kalba",
+     "away": "jazira",
+     "ko": "2026-10-18T13:05:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 2
+    },
+    {
+     "id": "2603385",
+     "home": "khorfakkan",
+     "away": "wahda",
+     "ko": "2026-10-18T13:05:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 3
+    },
+    {
+     "id": "2603386",
+     "home": "ajman",
+     "away": "sharjah",
+     "ko": "2026-10-18T15:45:00Z",
+     "status": "FT",
+     "hs": 1,
+     "as": 3
+    }
+   ]
+  },
+  {
+   "round": 7,
+   "matches": [
+    {
+     "id": "2611408",
+     "home": "united",
+     "away": "khorfakkan",
+     "ko": "2026-12-29T12:55:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611412",
+     "home": "sharjah",
+     "away": "nasr",
+     "ko": "2026-12-29T12:55:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611406",
+     "home": "ain",
+     "away": "ajman",
+     "ko": "2026-12-29T15:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611407",
+     "home": "wasl",
+     "away": "dhafra",
+     "ko": "2026-12-29T15:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611409",
+     "home": "shabab",
+     "away": "kalba",
+     "ko": "2026-12-30T12:55:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611410",
+     "home": "wahda",
+     "away": "hatta",
+     "ko": "2026-12-30T12:55:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611411",
+     "home": "jazira",
+     "away": "baniyas",
+     "ko": "2026-12-30T15:45:00Z",
+     "status": "NS"
+    }
+   ]
+  },
+  {
+   "round": 8,
+   "matches": [
+    {
+     "id": "2611413",
+     "home": "dhafra",
+     "away": "kalba",
+     "ko": "2026-11-07T12:55:00Z",
+     "status": "FT",
+     "hs": 1,
+     "as": 3
+    },
+    {
+     "id": "2611414",
+     "home": "hatta",
+     "away": "khorfakkan",
+     "ko": "2026-11-07T15:30:00Z",
+     "status": "FT",
+     "hs": 1,
+     "as": 2
+    },
+    {
+     "id": "2611415",
+     "home": "sharjah",
+     "away": "shabab",
+     "ko": "2026-11-07T15:30:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 0
+    },
+    {
+     "id": "2611416",
+     "home": "jazira",
+     "away": "wasl",
+     "ko": "2026-11-08T12:55:00Z",
+     "status": "FT",
+     "hs": 2,
+     "as": 1
+    },
+    {
+     "id": "2611417",
+     "home": "nasr",
+     "away": "united",
+     "ko": "2026-11-08T12:55:00Z",
+     "status": "FT",
+     "hs": 4,
+     "as": 1
+    },
+    {
+     "id": "2611418",
+     "home": "wahda",
+     "away": "ain",
+     "ko": "2026-11-08T15:30:00Z",
+     "status": "FT",
+     "hs": 0,
+     "as": 0
+    },
+    {
+     "id": "2611419",
+     "home": "ajman",
+     "away": "baniyas",
+     "ko": "2026-11-08T15:30:00Z",
+     "status": "FT",
+     "hs": 1,
+     "as": 1
+    }
+   ]
+  },
+  {
+   "round": 9,
+   "matches": [
+    {
+     "id": "2611420",
+     "home": "wasl",
+     "away": "hatta",
+     "ko": "2026-11-19T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611421",
+     "home": "ain",
+     "away": "dhafra",
+     "ko": "2026-11-19T15:25:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611422",
+     "home": "kalba",
+     "away": "sharjah",
+     "ko": "2026-11-20T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611423",
+     "home": "shabab",
+     "away": "ajman",
+     "ko": "2026-11-20T15:25:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611424",
+     "home": "baniyas",
+     "away": "nasr",
+     "ko": "2026-11-21T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611425",
+     "home": "khorfakkan",
+     "away": "jazira",
+     "ko": "2026-11-21T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611426",
+     "home": "united",
+     "away": "wahda",
+     "ko": "2026-11-21T15:25:00Z",
+     "status": "NS"
+    }
+   ]
+  },
+  {
+   "round": 10,
+   "matches": [
+    {
+     "id": "2611427",
+     "home": "wahda",
+     "away": "wasl",
+     "ko": "2026-12-03T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611428",
+     "home": "jazira",
+     "away": "ain",
+     "ko": "2026-12-03T15:25:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611429",
+     "home": "ajman",
+     "away": "united",
+     "ko": "2026-12-04T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611430",
+     "home": "nasr",
+     "away": "shabab",
+     "ko": "2026-12-04T15:25:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611431",
+     "home": "hatta",
+     "away": "kalba",
+     "ko": "2026-12-05T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611432",
+     "home": "dhafra",
+     "away": "baniyas",
+     "ko": "2026-12-05T15:25:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611433",
+     "home": "sharjah",
+     "away": "khorfakkan",
+     "ko": "2026-12-05T15:25:00Z",
+     "status": "NS"
+    }
+   ]
+  },
+  {
+   "round": 11,
+   "matches": [
+    {
+     "id": "2611434",
+     "home": "ain",
+     "away": "hatta",
+     "ko": "2026-12-12T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611435",
+     "home": "baniyas",
+     "away": "shabab",
+     "ko": "2026-12-12T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611436",
+     "home": "wasl",
+     "away": "sharjah",
+     "ko": "2026-12-12T15:30:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611437",
+     "home": "kalba",
+     "away": "wahda",
+     "ko": "2026-12-13T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611438",
+     "home": "khorfakkan",
+     "away": "ajman",
+     "ko": "2026-12-13T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611439",
+     "home": "dhafra",
+     "away": "nasr",
+     "ko": "2026-12-13T15:30:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611440",
+     "home": "united",
+     "away": "jazira",
+     "ko": "2026-12-13T15:30:00Z",
+     "status": "NS"
+    }
+   ]
+  },
+  {
+   "round": 12,
+   "matches": [
+    {
+     "id": "2611441",
+     "home": "hatta",
+     "away": "united",
+     "ko": "2026-12-23T12:50:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611442",
+     "home": "kalba",
+     "away": "baniyas",
+     "ko": "2026-12-23T12:50:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611446",
+     "home": "ajman",
+     "away": "wasl",
+     "ko": "2026-12-23T15:35:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611443",
+     "home": "nasr",
+     "away": "khorfakkan",
+     "ko": "2026-12-24T12:50:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611447",
+     "home": "sharjah",
+     "away": "ain",
+     "ko": "2026-12-24T15:35:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611444",
+     "home": "jazira",
+     "away": "dhafra",
+     "ko": "2026-12-25T12:50:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611445",
+     "home": "shabab",
+     "away": "wahda",
+     "ko": "2026-12-25T15:35:00Z",
+     "status": "NS"
+    }
+   ]
+  },
+  {
+   "round": 13,
+   "matches": [
+    {
+     "id": "2611452",
+     "home": "united",
+     "away": "ain",
+     "ko": "2027-01-02T12:55:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611451",
+     "home": "dhafra",
+     "away": "ajman",
+     "ko": "2027-01-02T16:00:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611453",
+     "home": "wasl",
+     "away": "nasr",
+     "ko": "2027-01-02T16:00:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611450",
+     "home": "khorfakkan",
+     "away": "kalba",
+     "ko": "2027-01-03T12:55:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611454",
+     "home": "baniyas",
+     "away": "sharjah",
+     "ko": "2027-01-03T12:55:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611448",
+     "home": "hatta",
+     "away": "shabab",
+     "ko": "2027-01-03T16:00:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611449",
+     "home": "wahda",
+     "away": "jazira",
+     "ko": "2027-01-03T16:00:00Z",
+     "status": "NS"
+    }
+   ]
+  },
+  {
+   "round": 14,
+   "matches": [
+    {
+     "id": "2626438",
+     "home": "wahda",
+     "away": "dhafra",
+     "ko": "2027-01-16T13:05:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626439",
+     "home": "united",
+     "away": "sharjah",
+     "ko": "2027-01-16T13:05:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626440",
+     "home": "ajman",
+     "away": "nasr",
+     "ko": "2027-01-16T16:00:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626441",
+     "home": "shabab",
+     "away": "khorfakkan",
+     "ko": "2027-01-17T13:05:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626442",
+     "home": "jazira",
+     "away": "hatta",
+     "ko": "2027-01-17T13:05:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626443",
+     "home": "ain",
+     "away": "baniyas",
+     "ko": "2027-01-17T16:00:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626444",
+     "home": "wasl",
+     "away": "kalba",
+     "ko": "2027-01-17T16:00:00Z",
+     "status": "NS"
+    }
+   ]
+  },
+  {
+   "round": 15,
+   "matches": [
+    {
+     "id": "2626445",
+     "home": "kalba",
+     "away": "united",
+     "ko": "2027-01-22T13:10:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626446",
+     "home": "nasr",
+     "away": "ain",
+     "ko": "2027-01-22T16:15:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626447",
+     "home": "baniyas",
+     "away": "khorfakkan",
+     "ko": "2027-01-23T13:10:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626448",
+     "home": "dhafra",
+     "away": "wasl",
+     "ko": "2027-01-23T16:15:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626449",
+     "home": "sharjah",
+     "away": "wahda",
+     "ko": "2027-01-23T16:15:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626450",
+     "home": "hatta",
+     "away": "ajman",
+     "ko": "2027-01-24T13:10:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626451",
+     "home": "jazira",
+     "away": "shabab",
+     "ko": "2027-01-24T16:15:00Z",
+     "status": "NS"
+    }
+   ]
+  },
+  {
+   "round": 16,
+   "matches": [
+    {
+     "id": "2626452",
+     "home": "kalba",
+     "away": "nasr",
+     "ko": "2027-01-29T13:15:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626453",
+     "home": "united",
+     "away": "dhafra",
+     "ko": "2027-01-29T13:15:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626454",
+     "home": "ain",
+     "away": "wahda",
+     "ko": "2027-01-29T16:15:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626455",
+     "home": "shabab",
+     "away": "baniyas",
+     "ko": "2027-01-30T13:15:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626456",
+     "home": "khorfakkan",
+     "away": "hatta",
+     "ko": "2027-01-30T13:15:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626457",
+     "home": "wasl",
+     "away": "jazira",
+     "ko": "2027-01-30T16:15:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626458",
+     "home": "sharjah",
+     "away": "ajman",
+     "ko": "2027-01-30T16:15:00Z",
+     "status": "NS"
+    }
+   ]
+  },
+  {
+   "round": 17,
+   "matches": [
+    {
+     "id": "2626459",
+     "home": "hatta",
+     "away": "wasl",
+     "ko": "2027-02-19T17:30:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626460",
+     "home": "shabab",
+     "away": "united",
+     "ko": "2027-02-19T17:30:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626461",
+     "home": "baniyas",
+     "away": "kalba",
+     "ko": "2027-02-20T17:30:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626462",
+     "home": "nasr",
+     "away": "sharjah",
+     "ko": "2027-02-20T17:30:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626463",
+     "home": "dhafra",
+     "away": "jazira",
+     "ko": "2027-02-21T17:30:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626464",
+     "home": "wahda",
+     "away": "khorfakkan",
+     "ko": "2027-02-21T17:30:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626465",
+     "home": "ajman",
+     "away": "ain",
+     "ko": "2027-02-21T17:30:00Z",
+     "status": "NS"
+    }
+   ]
+  }
+ ],
+ "updated": "2026-11-09T21:17:41Z"
+}
