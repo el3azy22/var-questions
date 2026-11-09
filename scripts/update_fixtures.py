@@ -23,10 +23,20 @@ def score(v):
     try: return int(v)
     except (TypeError, ValueError): return None
 
+old = None
+try: old = json.load(open(OUT))
+except Exception: pass
+old_rounds = {r["round"]: r for r in (old or {}).get("rounds", [])}
+
 rounds = []
 for r in range(1, 27):
-    ev = get(f"{API}/eventsround.php?id={LEAGUE}&r={r}&s={SEASON}").get("events") or []
-    time.sleep(2.5)  # المفتاح المجاني: لين 30 طلب بالدقيقة
+    resp = get(f"{API}/eventsround.php?id={LEAGUE}&r={r}&s={SEASON}")
+    ev = resp.get("events") or []
+    time.sleep(3)  # المفتاح المجاني: لين 30 طلب بالدقيقة
+    # لو المصدر ما رد على هالجولة نخلي اللي عندنا، ما نمسحها
+    if not ev:
+        if r in old_rounds: rounds.append(old_rounds[r])
+        continue
     ms = []
     for e in ev:
         h, a = TEAM.get(e.get("idHomeTeam")), TEAM.get(e.get("idAwayTeam"))
@@ -54,9 +64,6 @@ pending = sorted((m["ko"], r["round"]) for r in rounds for m in r["matches"] if 
 current = pending[0][1] if pending else rounds[-1]["round"]
 data = {"league": "دوري أدنوك للمحترفين", "season": SEASON, "source": "TheSportsDB", "current": current, "rounds": rounds}
 
-old = None
-try: old = json.load(open(OUT))
-except Exception: pass
 if old and {k: v for k, v in old.items() if k != "updated"} == data:
     print("no change"); sys.exit(0)
 data["updated"] = now

@@ -643,6 +643,222 @@
    ]
   },
   {
+   "round": 11,
+   "matches": [
+    {
+     "id": "2611434",
+     "home": "ain",
+     "away": "hatta",
+     "ko": "2026-12-12T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611435",
+     "home": "baniyas",
+     "away": "shabab",
+     "ko": "2026-12-12T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611436",
+     "home": "wasl",
+     "away": "sharjah",
+     "ko": "2026-12-12T15:30:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611437",
+     "home": "kalba",
+     "away": "wahda",
+     "ko": "2026-12-13T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611438",
+     "home": "khorfakkan",
+     "away": "ajman",
+     "ko": "2026-12-13T12:45:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611439",
+     "home": "dhafra",
+     "away": "nasr",
+     "ko": "2026-12-13T15:30:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611440",
+     "home": "united",
+     "away": "jazira",
+     "ko": "2026-12-13T15:30:00Z",
+     "status": "NS"
+    }
+   ]
+  },
+  {
+   "round": 12,
+   "matches": [
+    {
+     "id": "2611441",
+     "home": "hatta",
+     "away": "united",
+     "ko": "2026-12-23T12:50:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611442",
+     "home": "kalba",
+     "away": "baniyas",
+     "ko": "2026-12-23T12:50:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611446",
+     "home": "ajman",
+     "away": "wasl",
+     "ko": "2026-12-23T15:35:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611443",
+     "home": "nasr",
+     "away": "khorfakkan",
+     "ko": "2026-12-24T12:50:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611447",
+     "home": "sharjah",
+     "away": "ain",
+     "ko": "2026-12-24T15:35:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611444",
+     "home": "jazira",
+     "away": "dhafra",
+     "ko": "2026-12-25T12:50:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611445",
+     "home": "shabab",
+     "away": "wahda",
+     "ko": "2026-12-25T15:35:00Z",
+     "status": "NS"
+    }
+   ]
+  },
+  {
+   "round": 13,
+   "matches": [
+    {
+     "id": "2611452",
+     "home": "united",
+     "away": "ain",
+     "ko": "2027-01-02T12:55:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611451",
+     "home": "dhafra",
+     "away": "ajman",
+     "ko": "2027-01-02T16:00:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611453",
+     "home": "wasl",
+     "away": "nasr",
+     "ko": "2027-01-02T16:00:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611450",
+     "home": "khorfakkan",
+     "away": "kalba",
+     "ko": "2027-01-03T12:55:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611454",
+     "home": "baniyas",
+     "away": "sharjah",
+     "ko": "2027-01-03T12:55:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611448",
+     "home": "hatta",
+     "away": "shabab",
+     "ko": "2027-01-03T16:00:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2611449",
+     "home": "wahda",
+     "away": "jazira",
+     "ko": "2027-01-03T16:00:00Z",
+     "status": "NS"
+    }
+   ]
+  },
+  {
+   "round": 14,
+   "matches": [
+    {
+     "id": "2626438",
+     "home": "wahda",
+     "away": "dhafra",
+     "ko": "2027-01-16T13:05:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626439",
+     "home": "united",
+     "away": "sharjah",
+     "ko": "2027-01-16T13:05:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626440",
+     "home": "ajman",
+     "away": "nasr",
+     "ko": "2027-01-16T16:00:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626441",
+     "home": "shabab",
+     "away": "khorfakkan",
+     "ko": "2027-01-17T13:05:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626442",
+     "home": "jazira",
+     "away": "hatta",
+     "ko": "2027-01-17T13:05:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626443",
+     "home": "ain",
+     "away": "baniyas",
+     "ko": "2027-01-17T16:00:00Z",
+     "status": "NS"
+    },
+    {
+     "id": "2626444",
+     "home": "wasl",
+     "away": "kalba",
+     "ko": "2027-01-17T16:00:00Z",
+     "status": "NS"
+    }
+   ]
+  },
+  {
    "round": 15,
    "matches": [
     {
@@ -805,5 +1021,5 @@
    ]
   }
  ],
- "updated": "2026-11-09T21:20:51Z"
+ "updated": "2026-11-09T21:17:41Z"
 }
