@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>ڤار — لوحة التحكم</title>
+<link rel="icon" href="img/logo.png">
+<style>
+@font-face{font-family:R;src:url(fonts/ReadexPro_500Medium.ttf);font-weight:500}
+@font-face{font-family:R;src:url(fonts/ReadexPro_600SemiBold.ttf);font-weight:600}
+@font-face{font-family:R;src:url(fonts/ReadexPro_700Bold.ttf);font-weight:700}
+:root{--bg1:#1A64D6;--bg2:#0E47B3;--bg3:#0A2E7A;--navy:#0A1F44;--royal:#1559C9;--gold:#F2C14E;--gold2:#FFE08A;--goldDeep:#C9962B;--soft:#F3F6FD;--text:#0A1F44;--textSoft:#5B6B8C;--ok:#22B573;--bad:#EF4A5C;--line:#E3E8F2;--glass:rgba(255,255,255,.14);--glassLine:rgba(255,255,255,.28)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{font-family:R,system-ui,sans-serif;font-weight:500;color:var(--text);background:linear-gradient(180deg,var(--bg1),var(--bg2) 45%,var(--bg3));background-attachment:fixed;-webkit-tap-highlight-color:transparent}
+button,input,select,textarea{font-family:inherit;font-size:16px}
+.wrap{max-width:980px;margin:0 auto;padding:16px 14px 90px}
+.top{display:flex;align-items:center;gap:12px;color:#fff;margin-bottom:14px}
+.top img{width:46px;height:46px;border-radius:50%;background:#fff}
+.top h1{font-size:22px;margin:0;font-weight:700}
+.top .who{margin-inline-start:auto;font-size:13px;opacity:.85;text-align:left}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px}
+.tab{flex:0 0 auto;border:1.5px solid var(--glassLine);background:var(--glass);color:#fff;border-radius:999px;padding:9px 16px;font-weight:600;cursor:pointer}
+.tab.on{background:linear-gradient(var(--gold2),var(--gold));color:var(--navy);border-color:var(--goldDeep)}
+.tab .n{display:inline-block;min-width:20px;margin-inline-start:6px;padding:0 6px;border-radius:999px;background:var(--bad);color:#fff;font-size:12px}
+.card{background:#fff;border-radius:22px;padding:16px;margin-bottom:12px;box-shadow:0 10px 24px rgba(5,20,60,.22)}
+.glasscard{background:var(--glass);border:1px solid var(--glassLine);border-radius:22px;padding:14px;color:#fff;margin-bottom:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:12px 18px;font-weight:700;cursor:pointer;color:var(--navy);background:linear-gradient(var(--gold2),var(--gold));box-shadow:0 4px 0 var(--goldDeep);margin-bottom:4px;transition:transform .08s}
+.btn:active{transform:scale(.97)}
+.btn.w{background:#fff;color:var(--royal);box-shadow:0 4px 0 #C9D6F2;border:1px solid var(--line)}
+.btn.r{background:var(--bad);color:#fff;box-shadow:0 4px 0 #A8182B}
+.btn.g{background:var(--ok);color:#fff;box-shadow:0 4px 0 #168A57}
+.btn.ghost{background:var(--glass);color:#fff;box-shadow:none;border:1.5px solid var(--glassLine)}
+.btn.sm{padding:8px 12px;font-size:14px;border-radius:12px}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.grow{flex:1 1 200px}
+input[type=text],input[type=search],input[type=number],input[type=datetime-local],select,textarea{width:100%;border:1px solid var(--line);background:var(--soft);border-radius:14px;padding:11px 12px;color:var(--text);outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--royal);background:#fff}
+textarea{min-height:80px;resize:vertical;line-height:1.7}
+label.l{display:block;font-weight:700;font-size:14px;margin:12px 0 6px}
+.muted{color:var(--textSoft);font-size:13px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700;color:#fff}
+.st{font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px}
+.st.new{background:#DDF6EA;color:#168A57}.st.ed{background:#FFF3D1;color:#9A6B00}.st.del{background:#FDE6E9;color:#C21F35}
+.q{display:flex;gap:10px;align-items:flex-start;padding:12px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.q:last-child{border-bottom:0}
+.q .t{font-weight:600;line-height:1.6}
+.q .a{color:var(--textSoft);font-size:13px;margin-top:2px}
+.banner{border-radius:18px;padding:12px 14px;margin-bottom:12px;font-weight:600;line-height:1.7}
+.banner.gold{background:linear-gradient(var(--gold2),var(--gold));color:var(--navy)}
+.banner.red{background:#FDE6E9;color:#C21F35}
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(10,31,68,.96);color:#fff;padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;z-index:20}
+.bar b{color:var(--gold2)}
+.ov{position:fixed;inset:0;background:rgba(5,20,60,.75);display:flex;align-items:flex-start;justify-content:center;padding:20px 12px;overflow-y:auto;z-index:50}
+.ov .card{width:100%;max-width:620px;margin-top:10px}
+.ans{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.ans input[type=radio]{width:22px;height:22px;accent-color:var(--ok)}
+.prev{background:linear-gradient(180deg,var(--bg1),var(--bg2));border-radius:20px;padding:14px}
+.prev .qc{background:#fff;border-radius:18px;padding:14px;text-align:center;font-weight:700;font-size:18px;line-height:1.6}
+.prev .pa{border-radius:14px;padding:12px;color:#fff;font-weight:700;margin-top:8px;display:flex;justify-content:space-between}
+.prev .pa.ok{outline:4px solid #fff}
+.toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%);background:#0A1F44;border:1px solid var(--gold);color:var(--gold2);padding:12px 20px;border-radius:16px;z-index:99;font-weight:600;box-shadow:0 10px 24px rgba(5,20,60,.45);max-width:90vw;text-align:center}
+.stat{flex:1 1 140px;background:#fff;border-radius:18px;padding:14px;text-align:center}
+.stat b{display:block;font-size:30px;color:var(--royal)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+td,th{border-bottom:1px solid var(--line);padding:6px;text-align:right;vertical-align:top}
+.err{color:#C21F35}
+.mascot{width:34px;height:34px;border-radius:50%;vertical-align:middle}
+.match{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;text-align:center;font-weight:700}
+.hidden{display:none!important}
+.center{text-align:center}
+.spin{width:36px;height:36px;border:4px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:s 1s linear infinite;margin:40px auto}
+@keyframes s{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <img src="img/logo.png" alt="">
+    <div><h1>ڤار — لوحة التحكم</h1><div class="muted" style="color:rgba(255,255,255,.75)">للمدير بس</div></div>
+    <div class="who" id="who"></div>
+  </div>
+  <div id="root"><div class="spin"></div></div>
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
