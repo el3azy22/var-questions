@@ -27,7 +27,8 @@ const CATS = { season: "الموسم الحالي", history: "تاريخ الد�
 const CAT_COLOR = { season: "#22B573", history: "#8E5CF0", cups: "#F2A93B", asia: "#EF4A5C", clubs: "#2E86F5", stars: "#F57C3A", crests: "#1FB5B0", career: "#00A7E1", ref: "#E5509F", national: "#C8102E" };
 const CLUBS = { ain: "العين", shabab: "شباب الأهلي", wasl: "الوصل", jazira: "الجزيرة", wahda: "الوحدة", sharjah: "الشارقة", nasr: "النصر", ajman: "عجمان", kalba: "كلباء", khorfakkan: "خورفكان", baniyas: "بني ياس", dhafra: "الظفرة", hatta: "حتا", united: "يونايتد" };
 const ANS = ["#EF4A5C", "#2E86F5", "#F2A93B", "#22B573"];
-const KINDS = { normal: "اختيار من متعدد", tf: "صح وغلط", order: "رتّب", guess: "خمّن من التلميحات", odd: "الغريب بينهم", adv: "متقدم (مسيرة لاعب / تحكيم)" };
+const KINDS = { normal: "اختيار من متعدد", tf: "صح وغلط", order: "رتّب", guess: "خمّن من التلميحات", odd: "الغريب بينهم", num: "قرّب الرقم", score: "توقّع النتيجة", pairs: "وصّل", blur: "شعار مغبّش", adv: "متقدم (مسيرة لاعب / تحكيم)" };
+const SPECIAL = ["num", "score", "pairs"];
 
 /* ---------- أدوات ---------- */
 const $ = (s, el = document) => el.querySelector(s);
@@ -137,13 +138,28 @@ function check(q, list, selfId) {
   if (!q.c || !CATS[q.c]) errs.push("اختار الفئة");
   if (!q.q || !q.q.trim()) errs.push("اكتب السؤال");
   if (typeof q.e !== "string") errs.push("الشرح لازم يكون نص");
-  if (!Array.isArray(q.a) || q.a.filter((x) => String(x).trim()).length < 2) errs.push("لازم جوابين على الأقل");
+  if (SPECIAL.includes(q.kind)) { /* الأجوبة تنحسب بروحها */ }
+  else if (!Array.isArray(q.a) || q.a.filter((x) => String(x).trim()).length < 2) errs.push("لازم جوابين على الأقل");
   else {
     if (q.a.some((x) => !String(x).trim())) errs.push("في جواب فاضي");
     const n = q.a.map(norm); if (new Set(n).size !== n.length) errs.push("في أجوبة مكررة");
   }
   if (q.kind === "tf" && !(q.a.length === 2 && q.a.includes("صح") && q.a.includes("غلط"))) errs.push("صح وغلط: الأجوبة لازم تكون «صح» و«غلط»");
   if (q.kind === "guess" && (!Array.isArray(q.clues) || q.clues.filter(Boolean).length < 2)) errs.push("خمّن: حط تلميحين على الأقل");
+  if (q.kind === "num") {
+    const ok = [q.n, q.min, q.max].every((x) => typeof x === "number" && isFinite(x));
+    if (!ok) errs.push("قرّب الرقم: اكتب الرقم الصح وأقل وأعلى رقم");
+    else if (!(q.min <= q.n && q.n <= q.max && q.min < q.max)) errs.push("الرقم الصح لازم يكون بين أقل رقم وأعلى رقم");
+  }
+  if (q.kind === "score" && (!Array.isArray(q.teams) || q.teams.length !== 2 || q.teams.some((t) => !String(t || "").trim()) || !Array.isArray(q.s) || q.s.some((x) => !(Number.isInteger(x) && x >= 0 && x <= 15)))) errs.push("توقّع النتيجة: اكتب اسم الفريقين والنتيجة");
+  if (q.kind === "pairs") {
+    const ps = (q.pairs || []).filter((p) => p[0]?.trim() || p[1]?.trim());
+    if (ps.length < 3) errs.push("وصّل: لازم 3 أزواج على الأقل");
+    if (ps.some((p) => !p[0]?.trim() || !p[1]?.trim())) errs.push("وصّل: في خانة فاضية");
+    const L = ps.map((p) => norm(p[0])), Rr = ps.map((p) => norm(p[1]));
+    if (new Set(L).size !== L.length || new Set(Rr).size !== Rr.length) errs.push("وصّل: في تكرار");
+  }
+  if (q.kind === "blur" && !q.img) errs.push("شعار مغبّش: اختار الشعار");
   if (q.img && !CLUBS[q.img]) errs.push("الشعار مب من أندية الدوري");
   if (q.club && !CLUBS[q.club]) errs.push("النادي مب من أندية الدوري");
   if (list) { const k = norm(q.q); const dup = list.find((x) => x.id !== selfId && norm(x.q) === k); if (dup) errs.push("السؤال موجود من قبل"); }
@@ -194,7 +210,7 @@ function paneQuestions(pane, d) {
     <div class="card" style="padding:6px 14px">${rows.length ? rows.slice(0, 400).map(({ q, st }) => `
       <div class="q" data-id="${q.id}" data-del="${st === "del" ? 1 : ""}">
         <span class="chip" style="background:${CAT_COLOR[q.c] || "#999"}">${esc(CATS[q.c] || q.c)}</span>
-        <div style="flex:1"><div class="t">${esc(q.q)}</div><div class="a">✔ ${esc(q.kind === "order" ? q.a.join(" ← ") : q.a[0])}${q.kind ? ` · ${esc(KINDS[q.kind] || KINDS.adv)}` : q.odd ? " · " + KINDS.odd : ""}</div></div>
+        <div style="flex:1"><div class="t">${esc(q.q)}</div><div class="a">✔ ${esc(q.kind === "order" ? q.a.join(" ← ") : q.kind === "num" ? `${q.n} ${q.unit || ""}` : q.kind === "score" ? `${q.teams?.[0]} ${q.s?.[0]}-${q.s?.[1]} ${q.teams?.[1]}` : q.kind === "pairs" ? (q.pairs || []).map((p) => p[0] + "↔" + p[1]).join("، ") : q.a[0])}${q.kind ? ` · ${esc(KINDS[q.kind] || KINDS.adv)}` : q.odd ? " · " + KINDS.odd : ""}</div></div>
         ${st ? `<span class="st ${st}">${{ new: "جديد", ed: "معدّل", del: "محذوف" }[st]}</span>` : ""}
       </div>`).join("") : `<div class="muted center" style="padding:20px">ما في أسئلة بهالبحث</div>`}
       ${rows.length > 400 ? `<div class="muted center" style="padding:10px">يطلع أول 400، ضيّق البحث</div>` : ""}
@@ -218,7 +234,7 @@ async function restoreRemoved(id) {
 }
 
 /* محرر السؤال */
-function kindOf(q) { if (!q) return "normal"; if (q.kind === "tf" || q.kind === "order" || q.kind === "guess") return q.kind; if (q.kind) return "adv"; if (q.odd) return "odd"; return "normal"; }
+function kindOf(q) { if (!q) return "normal"; if (["tf", "order", "guess", "num", "score", "pairs", "blur"].includes(q.kind)) return q.kind; if (q.kind) return "adv"; if (q.odd) return "odd"; return "normal"; }
 function editor(orig, presetText) {
   const isNew = !orig;
   let q = orig ? clone(orig) : { id: uid(), c: "history", q: presetText || "", a: ["", "", "", ""], e: "" };
@@ -228,6 +244,16 @@ function editor(orig, presetText) {
   document.body.appendChild(o); document.body.style.overflow = "hidden";
   const close = () => { o.remove(); document.body.style.overflow = ""; };
 
+  function specialHtml() {
+    if (kind === "num") return `<div class="row">${[["n", "الرقم الصح"], ["min", "أقل رقم"], ["max", "أعلى رقم"]].map(([k, l]) => `<div class="grow"><label class="l">${l}</label><input type="number" data-n="${k}" value="${q[k] ?? ""}"></div>`).join("")}</div>
+      <div class="row">${[["step", "الخطوة (1 = عادي)"], ["tol", "يحسب قريب لين فرق"]].map(([k, l]) => `<div class="grow"><label class="l">${l}</label><input type="number" data-n="${k}" value="${q[k] ?? ""}"></div>`).join("")}<div class="grow"><label class="l">الوحدة (اختياري)</label><input type="text" id="funit" value="${esc(q.unit || "")}" placeholder="مثل: متفرج، هدف"></div></div>
+      <div class="muted">بالضبط = النقاط كاملة. قريب (داخل الفرق اللي حطيته) = نص النقاط.</div>`;
+    if (kind === "score") return `<div class="row"><div class="grow"><label class="l">الفريق الأول</label><input type="text" data-t="0" value="${esc(q.teams?.[0] || "")}"></div><div style="flex:0 0 90px"><label class="l">أهدافه</label><input type="number" min="0" max="15" data-s="0" value="${q.s?.[0] ?? 0}"></div></div>
+      <div class="row"><div class="grow"><label class="l">الفريق الثاني</label><input type="text" data-t="1" value="${esc(q.teams?.[1] || "")}"></div><div style="flex:0 0 90px"><label class="l">أهدافه</label><input type="number" min="0" max="15" data-s="1" value="${q.s?.[1] ?? 0}"></div></div>
+      <div class="muted">النتيجة بالضبط = كاملة. الفايز صح = نص النقاط.</div>`;
+    if (kind === "pairs") return (q.pairs || []).map((p, i) => `<div class="ans"><b style="width:22px">${i + 1}</b><input type="text" data-p="${i}-0" value="${esc(p[0])}" placeholder="يمين"><span>↔</span><input type="text" data-p="${i}-1" value="${esc(p[1])}" placeholder="يسار">${(q.pairs || []).length > 3 ? `<button class="btn w sm" data-rmp="${i}">✕</button>` : ""}</div>`).join("") + ((q.pairs || []).length < 5 ? `<button class="btn w sm" id="addP">+ زوج</button>` : "") + `<div class="muted">يتلخبط ترتيب اليسار للاعب. 3 غلطات وتخلص.</div>`;
+    return "";
+  }
   function answersHtml() {
     if (kind === "tf") return ["صح", "غلط"].map((v, i) => `<label class="ans"><input type="radio" name="cr" value="${i}" ${q.a[0] === v ? "checked" : ""}> <b>${v}</b> ${q.a[0] === v ? '<span class="st new">هذا الصح</span>' : ""}</label>`).join("");
     const lab = kind === "order" ? "اكتبها بالترتيب الصح (من فوق لتحت)" : kind === "odd" ? "اختار الغريب" : "اختار الجواب الصح";
@@ -246,7 +272,7 @@ function editor(orig, presetText) {
         <div class="muted">هالنوع فيه رسمة أو مسيرة لاعب. عدّل النصوص بحذر وخل الشكل مثل ما هو. الجواب الصح أول واحد في "a".</div>` : `
       <label class="l">السؤال</label><textarea id="fq" maxlength="300">${esc(q.q)}</textarea>
       ${kind === "guess" ? `<label class="l">التلميحات (كل وحدة في سطر، من الأصعب للأسهل)</label><textarea id="fcl">${esc((q.clues || []).join("\n"))}</textarea>` : ""}
-      <label class="l">الأجوبة</label><div id="fa">${answersHtml()}</div>
+      <label class="l">${SPECIAL.includes(kind) ? KINDS[kind] : "الأجوبة"}</label><div id="fa">${SPECIAL.includes(kind) ? specialHtml() : answersHtml()}</div>
       <label class="l">الشرح (يطلع بعد الجواب)</label><textarea id="fe" maxlength="400">${esc(q.e)}</textarea>
       <div class="row"><div class="grow"><label class="l">النادي المرتبط (اختياري)</label><select id="fclub"><option value="">—</option>${Object.entries(CLUBS).map(([k, v]) => `<option value="${k}" ${q.club === k ? "selected" : ""}>${v}</option>`).join("")}</select></div>
       <div class="grow"><label class="l">صورة شعار في السؤال (اختياري)</label><select id="fimg"><option value="">بدون</option>${Object.entries(CLUBS).map(([k, v]) => `<option value="${k}" ${q.img === k ? "selected" : ""}>${v}</option>`).join("")}</select></div></div>
@@ -267,6 +293,13 @@ function editor(orig, presetText) {
       $("#fclub", o).onchange = (e) => { q.club = e.target.value || undefined; draw(); };
       $("#fimg", o).onchange = (e) => { q.img = e.target.value || undefined; draw(); };
       o.querySelectorAll("[data-a]").forEach((el) => (el.oninput = () => { q.a[+el.dataset.a] = el.value; refresh(); }));
+      o.querySelectorAll("[data-n]").forEach((el) => (el.oninput = () => { const v = el.value === "" ? undefined : Number(el.value); q[el.dataset.n] = v; refresh(); }));
+      $("#funit", o) && ($("#funit", o).oninput = (e) => { q.unit = e.target.value || undefined; refresh(); });
+      o.querySelectorAll("[data-t]").forEach((el) => (el.oninput = () => { q.teams = q.teams || ["", ""]; q.teams[+el.dataset.t] = el.value; refresh(); }));
+      o.querySelectorAll("[data-s]").forEach((el) => (el.oninput = () => { q.s = q.s || [0, 0]; q.s[+el.dataset.s] = Math.max(0, parseInt(el.value || "0", 10) || 0); refresh(); }));
+      o.querySelectorAll("[data-p]").forEach((el) => (el.oninput = () => { const [i, j] = el.dataset.p.split("-").map(Number); q.pairs[i][j] = el.value; refresh(); }));
+      o.querySelectorAll("[data-rmp]").forEach((el) => (el.onclick = () => { q.pairs.splice(+el.dataset.rmp, 1); draw(); }));
+      $("#addP", o) && ($("#addP", o).onclick = () => { q.pairs.push(["", ""]); draw(); });
       o.querySelectorAll("input[name=cr]").forEach((el) => (el.onchange = () => {
         if (kind === "tf") { q.a = el.value === "0" ? ["صح", "غلط"] : ["غلط", "صح"]; } else correct = +el.value;
         draw();
@@ -292,18 +325,31 @@ function editor(orig, presetText) {
   function switchKind(k) {
     if (k === "adv") { kind = "adv"; return; }
     const prevAns = q.a.filter((x) => x !== "صح" && x !== "غلط");
+    for (const f of ["n", "min", "max", "step", "tol", "unit", "teams", "s", "pairs"]) delete q[f];
+    if (k === "num") { q.kind = "num"; delete q.clues; delete q.odd; q.min = 0; q.max = 100; kind = k; return; }
+    if (k === "score") { q.kind = "score"; delete q.clues; delete q.odd; q.teams = ["", ""]; q.s = [0, 0]; kind = k; return; }
+    if (k === "pairs") { q.kind = "pairs"; delete q.clues; delete q.odd; q.pairs = [["", ""], ["", ""], ["", ""], ["", ""]]; kind = k; return; }
     if (k === "tf") { q.kind = "tf"; q.a = ["صح", "غلط"]; delete q.clues; delete q.odd; }
     else {
-      if (kind === "tf") q.a = ["", "", "", ""]; else if (!prevAns.length) q.a = ["", "", "", ""];
+      if (kind === "tf" || SPECIAL.includes(kind)) q.a = ["", "", "", ""]; else if (!prevAns.length) q.a = ["", "", "", ""];
       delete q.kind; delete q.odd; delete q.career; delete q.scene;
       if (k === "order") q.kind = "order";
       if (k === "guess") { q.kind = "guess"; q.clues = q.clues || []; } else delete q.clues;
       if (k === "odd") q.odd = true;
+      if (k === "blur") { q.kind = "blur"; q.c = "crests"; }
     }
     kind = k; correct = 0;
   }
   function build() {
     if (kind === "adv") return q;
+    if (SPECIAL.includes(kind)) {
+      const b = { ...q, q: (q.q || "").trim(), e: (q.e || "").trim() };
+      if (kind === "num") { b.a = [String(b.n ?? ""), String(b.min ?? ""), String(b.max ?? "")]; if (!b.step) delete b.step; if (!b.tol) delete b.tol; }
+      if (kind === "score") { b.teams = (b.teams || ["", ""]).map((t) => String(t).trim()); b.a = [`${b.s?.[0]} - ${b.s?.[1]}`, "نتيجة ثانية"]; }
+      if (kind === "pairs") { b.pairs = (b.pairs || []).map((p) => [String(p[0]).trim(), String(p[1]).trim()]).filter((p) => p[0] || p[1]); b.a = ["شوف التوصيل الصح فوق", "توصيل ثاني"]; }
+      Object.keys(b).forEach((k) => (b[k] === undefined || b[k] === "") && k !== "e" && delete b[k]);
+      return b;
+    }
     const b = { ...q, q: (q.q || "").trim(), e: (q.e || "").trim(), a: q.a.map((x) => String(x).trim()) };
     if (kind !== "tf" && kind !== "order" && correct > 0) { const a = b.a.slice(); const [c] = a.splice(correct, 1); a.unshift(c); b.a = a; }
     Object.keys(b).forEach((k) => (b[k] === undefined || b[k] === "") && k !== "e" && delete b[k]);
@@ -323,13 +369,16 @@ const stripId = (q) => { const { id, ...r } = q; return r; };
 function preview(q) {
   const a = q.a || [];
   let ans;
-  if (q.kind === "order") ans = a.map((x, i) => `<div class="pa" style="background:${ANS[i % 4]}"><span>${esc(x || "…")}</span><span>${i + 1}</span></div>`).join("");
+  if (q.kind === "num") ans = `<div class="pa" style="background:rgba(255,255,255,.18);justify-content:center;font-size:30px">${q.n ?? "؟"} ${esc(q.unit || "")}</div><div class="muted center" style="color:#fff">بين ${q.min ?? "?"} و ${q.max ?? "?"}${q.tol ? ` · قريب لين فرق ${q.tol}` : ""}</div>`;
+  else if (q.kind === "score") ans = `<div class="pa" style="background:rgba(255,255,255,.18);justify-content:center;font-size:24px">${esc(q.teams?.[0] || "…")} ${q.s?.[0] ?? 0} - ${q.s?.[1] ?? 0} ${esc(q.teams?.[1] || "…")}</div>`;
+  else if (q.kind === "pairs") ans = (q.pairs || []).map((p, i) => `<div class="pa" style="background:${ANS[i % 4]}"><span>${esc(p[0] || "…")}</span><span>↔ ${esc(p[1] || "…")}</span></div>`).join("");
+  else if (q.kind === "order") ans = a.map((x, i) => `<div class="pa" style="background:${ANS[i % 4]}"><span>${esc(x || "…")}</span><span>${i + 1}</span></div>`).join("");
   else {
     // اللاعب يشوف الأجوبة بترتيب عشوائي، هني نخلط ترتيب ثابت عشان تشوف الشكل
     const order = q.kind === "tf" ? [a.indexOf("صح"), a.indexOf("غلط")] : a.map((_, i) => i).sort((x, y) => ((x * 7 + 3) % 5) - ((y * 7 + 3) % 5));
     ans = order.filter((i) => i >= 0).map((i, j) => `<div class="pa ${i === 0 ? "ok" : ""}" style="background:${ANS[j % 4]}"><span>${esc(a[i] || "…")}</span><span>${i === 0 ? "✔" : ""}</span></div>`).join("");
   }
-  const img = q.img ? `<div class="center" style="margin:10px 0"><span style="display:inline-flex;width:110px;height:110px;border-radius:50%;background:#fff;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(0,0,0,.2)"><img src="img/crests/${q.img}.png" style="width:70px;height:70px;object-fit:contain"></span></div>` : "";
+  const img = q.kind === "blur" && q.img ? `<div class="center" style="margin:10px 0"><span style="display:inline-flex;width:110px;height:110px;border-radius:50%;background:#DDE5F2;align-items:center;justify-content:center"><img src="img/crests/${q.img}.png" style="width:70px;height:70px;object-fit:contain;filter:blur(6px)"></span><div class="muted">يبدا مغبّش ويوضح مع الوقت</div></div>` : q.img ? `<div class="center" style="margin:10px 0"><span style="display:inline-flex;width:110px;height:110px;border-radius:50%;background:#fff;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(0,0,0,.2)"><img src="img/crests/${q.img}.png" style="width:70px;height:70px;object-fit:contain"></span></div>` : "";
   const clues = q.kind === "guess" && q.clues?.length ? `<div style="margin-top:8px;font-size:14px;font-weight:600;color:var(--textSoft)">${q.clues.map((c, i) => `${i + 1}. ${esc(c)}`).join("<br>")}</div>` : "";
   return `<div class="prev"><div class="qc"><span class="chip" style="background:${CAT_COLOR[q.c] || "#999"}">${esc(CATS[q.c] || "")}</span>${img}<div style="margin-top:8px">${esc(q.q || "…")}</div>${clues}</div>${ans}
     ${q.e ? `<div style="background:#fff;border-radius:14px;padding:10px;margin-top:10px;font-size:14px;color:var(--textSoft)">${esc(q.e)}</div>` : ""}</div>`;
