@@ -466,6 +466,7 @@ function rowToQ(r) {
   const c = byLabel(CATS, g("الفئة")); if (!c) errs.push("الفئة مب معروفة");
   const kl = g("النوع"); const kind = !kl ? "normal" : (Object.keys(KINDS).find((k) => norm(KINDS[k]) === norm(kl) || k === kl) || null);
   if (!kind || kind === "adv") errs.push("النوع مب معروف");
+  else if (["num", "score", "pairs", "blur"].includes(kind)) errs.push(`«${KINDS[kind]}» يتضاف من زر «سؤال جديد» في اللوحة، مب من Excel`);
   const q = { id: uid(), c: c || "", q: g("السؤال"), e: g("الشرح"), a: [] };
   if (kind === "tf") { const v = g("الجواب الصح"); if (v !== "صح" && v !== "غلط") errs.push("صح وغلط: الجواب لازم «صح» أو «غلط»"); q.kind = "tf"; q.a = v === "غلط" ? ["غلط", "صح"] : ["صح", "غلط"]; }
   else {
