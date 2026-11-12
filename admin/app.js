@@ -50,7 +50,7 @@ function ask({ title, body = "", ok = "تمام", danger = false, cancel = "إل
 const isAdmin = (u) => !!u && u.emailVerified && String(u.email || "").toLowerCase() === ADMIN_EMAIL;
 
 /* ---------- الحالة ---------- */
-const S = { user: null, tab: "q", pub: null, draft: null, history: {}, reports: {}, fxo: {}, fixtures: null, ghVersion: 0, filter: { s: "", c: "", st: "" }, round: null, unsub: [] };
+const S = { user: null, tab: "q", pub: null, draft: null, history: {}, reports: {}, ureports: {}, fxo: {}, fixtures: null, ghVersion: 0, filter: { s: "", c: "", st: "" }, round: null, unsub: [] };
 const ready = { pub: false, draft: false };
 
 /* ---------- الدخول ---------- */
@@ -95,6 +95,7 @@ function start() {
   on("bank/draft", (v) => { S.draft = v; ready.draft = true; boot(); });
   on("bank/history", (v) => { S.history = v || {}; render(); });
   on("reports", (v) => { S.reports = v || {}; render(); });
+  on("ureports", (v) => { S.ureports = v || {}; render(); });
   on("fxo", (v) => { S.fxo = v || {}; render(); });
   fetch(GH_QUESTIONS + "?t=" + Date.now()).then((r) => r.json()).then((d) => { S.gh = d; S.ghVersion = Number(d.version) || 0; boot(); }).catch(() => { S.gh = null; boot(); });
   fetch(GH_FIXTURES + "?t=" + Date.now()).then((r) => r.json()).then((d) => { S.fixtures = d; if (S.round == null) S.round = d.current || 1; render(); }).catch(() => {});
@@ -169,7 +170,7 @@ function check(q, list, selfId) {
 /* ---------- العرض ---------- */
 function render() {
   if (!S.user || !isAdmin(S.user) || !booted) return;
-  const d = diff(); const nRep = Object.keys(S.reports).length;
+  const d = diff(); const nRep = Object.keys(S.reports).length + Object.keys(S.ureports).length;
   const tabs = [["q", "الأسئلة"], ["rep", "البلاغات", nRep], ["fx", "المباريات"], ["ver", "النسخ"], ["st", "الأرقام"]];
   $("#root").innerHTML = `
     <div class="tabs">${tabs.map(([k, t, n]) => `<button class="tab ${S.tab === k ? "on" : ""}" data-tab="${k}">${t}${n ? `<span class="n">${n}</span>` : ""}</button>`).join("")}</div>
@@ -528,14 +529,35 @@ function importReview(items, name) {
 
 /* ---------- البلاغات ---------- */
 function paneReports(pane) {
+  const ul = Object.entries(S.ureports).map(([k, v]) => ({ k, ...v })).sort((a, b) => (b.at || 0) - (a.at || 0));
+  const uhtml = ul.length ? `<div class="glasscard"><b>بلاغات عن لاعبين ودوريات (${ul.length})</b><div class="muted" style="color:rgba(255,255,255,.75)">أبل تطلب نرد على البلاغ خلال 24 ساعة</div></div>` + ul.map((r) => `<div class="card">
+    <div class="row" style="justify-content:space-between"><span class="st del">${esc(r.why)}</span><span class="muted">${fmtDate(r.at)}</span></div>
+    <div style="font-weight:700;margin-top:8px">${r.kind === "league" ? "دوري" : "لاعب"}: «${esc(r.name)}»</div>
+    <div class="muted">وين: ${esc(r.where)}</div>
+    ${r.note ? `<div style="background:var(--soft);border-radius:12px;padding:10px;margin-top:8px">«${esc(r.note)}»</div>` : ""}
+    <div class="row" style="margin-top:10px">${r.kind === "league"
+      ? `<button class="btn r sm" data-udelleague="${r.k}">احذف الدوري</button>`
+      : `<button class="btn r sm" data-urename="${r.k}">غيّر اسمه إلى «لاعب»</button>`}<button class="btn g sm" data-udone="${r.k}">ما فيه شي ✓</button></div></div>`).join("") : "";
   const list = Object.entries(S.reports).map(([k, v]) => ({ k, ...v })).sort((a, b) => (b.at || 0) - (a.at || 0));
-  pane.innerHTML = list.length ? list.map((r) => `<div class="card">
+  pane.innerHTML = uhtml + (list.length || ul.length ? (list.length ? `<div class="glasscard"><b>بلاغات عن الأسئلة (${list.length})</b></div>` : "") + list.map((r) => `<div class="card">
     <div class="row" style="justify-content:space-between"><span class="st del">${esc(r.why)}</span><span class="muted">${fmtDate(r.at)}</span></div>
     <div style="font-weight:700;margin-top:8px;line-height:1.7">${esc(r.q)}</div>
     ${r.ans ? `<div class="muted">الجواب في اللعبة: ${esc(r.ans)}</div>` : ""}
     ${r.note ? `<div style="background:var(--soft);border-radius:12px;padding:10px;margin-top:8px">«${esc(r.note)}»</div>` : ""}
     <div class="row" style="margin-top:10px"><button class="btn sm" data-open="${r.k}">افتح السؤال وعدّله</button><button class="btn g sm" data-done="${r.k}">تم ✓</button></div></div>`).join("")
-    : `<div class="glasscard center">ما في بلاغات 👌</div>`;
+    : `<div class="glasscard center">ما في بلاغات 👌</div>`);
+  const closeU = (k) => D.remove(R("ureports/" + k));
+  pane.querySelectorAll("[data-udone]").forEach((b) => (b.onclick = () => closeU(b.dataset.udone).then(() => toast("انقفل البلاغ")).catch((e) => toast("ما انقفل: " + (e?.code || e)))));
+  pane.querySelectorAll("[data-urename]").forEach((b) => (b.onclick = async () => {
+    const k = b.dataset.urename, r = S.ureports[k];
+    if (!(await ask({ title: "تغيّر اسمه؟", body: `اسم «${r.name}» بيصير «لاعب» في جدول الدوري. (في غرف الأونلاين الاسم المسيء يتخفى أوتوماتيك)`, ok: "غيّر", danger: true }))) return;
+    try { await D.update(R("users/" + r.target), { name: "لاعب" }); await closeU(k); toast("تغيّر الاسم وانقفل البلاغ ✅"); } catch (e) { toast("ما تغيّر: " + (e?.code || e)); }
+  }));
+  pane.querySelectorAll("[data-udelleague]").forEach((b) => (b.onclick = async () => {
+    const k = b.dataset.udelleague, r = S.ureports[k];
+    if (!(await ask({ title: "تحذف الدوري؟", body: `دوري «${r.name}» بينحذف لكل المشاركين. توقعاتهم تبقى في الترتيب العام.`, ok: "احذف", danger: true }))) return;
+    try { await D.remove(R("leagues/" + r.target)); await closeU(k); toast("انحذف الدوري وانقفل البلاغ ✅"); } catch (e) { toast("ما انحذف: " + (e?.code || e)); }
+  }));
   pane.querySelectorAll("[data-done]").forEach((b) => (b.onclick = () => D.remove(R("reports/" + b.dataset.done)).then(() => toast("انقفل البلاغ")).catch((e) => toast("ما انقفل: " + (e?.code || e)))));
   pane.querySelectorAll("[data-open]").forEach((b) => (b.onclick = () => {
     const r = S.reports[b.dataset.open]; const k = norm(r.q);
