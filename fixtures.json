@@ -2,7 +2,7 @@
  "league": "دوري أدنوك للمحترفين",
  "season": "2026-2027",
  "source": "TheSportsDB",
- "current": 9,
+ "current": 10,
  "rounds": [
   {
    "round": 1,
@@ -596,7 +596,9 @@
      "home": "united",
      "away": "wahda",
      "ko": "2026-11-21T15:25:00Z",
-     "status": "2H"
+     "status": "FT",
+     "hs": 1,
+     "as": 1
     }
    ]
   },
@@ -1033,5 +1035,5 @@
    ]
   }
  ],
- "updated": "2026-11-21T16:58:24Z"
+ "updated": "2026-11-21T18:59:43Z"
 }
