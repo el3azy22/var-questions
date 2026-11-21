@@ -578,14 +578,18 @@
      "home": "baniyas",
      "away": "nasr",
      "ko": "2026-11-21T12:45:00Z",
-     "status": "1H"
+     "status": "FT",
+     "hs": 2,
+     "as": 1
     },
     {
      "id": "2611425",
      "home": "khorfakkan",
      "away": "jazira",
      "ko": "2026-11-21T12:45:00Z",
-     "status": "1H"
+     "status": "FT",
+     "hs": 1,
+     "as": 1
     },
     {
      "id": "2611426",
@@ -1029,5 +1033,5 @@
    ]
   }
  ],
- "updated": "2026-11-21T13:08:02Z"
+ "updated": "2026-11-21T15:00:52Z"
 }
