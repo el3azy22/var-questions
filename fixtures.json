@@ -2,7 +2,7 @@
  "league": "دوري أدنوك للمحترفين",
  "season": "2026-2027",
  "source": "TheSportsDB",
- "current": 10,
+ "current": 7,
  "rounds": [
   {
    "round": 1,
@@ -416,6 +416,13 @@
    "round": 7,
    "matches": [
     {
+     "id": "2611407",
+     "home": "wasl",
+     "away": "dhafra",
+     "ko": "2026-11-28T14:15:00Z",
+     "status": "NS"
+    },
+    {
      "id": "2611408",
      "home": "united",
      "away": "khorfakkan",
@@ -433,13 +440,6 @@
      "id": "2611406",
      "home": "ain",
      "away": "ajman",
-     "ko": "2026-12-29T15:45:00Z",
-     "status": "NS"
-    },
-    {
-     "id": "2611407",
-     "home": "wasl",
-     "away": "dhafra",
      "ko": "2026-12-29T15:45:00Z",
      "status": "NS"
     },
@@ -1035,5 +1035,5 @@
    ]
   }
  ],
- "updated": "2026-11-21T18:59:43Z"
+ "updated": "2026-11-25T11:09:33Z"
 }
